@@ -3,141 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AR1XY CASINO GOD MODE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>AR1XY LUXURY | PRO EDITION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --gold: linear-gradient(135deg, #d4af37 0%, #f9f295 45%, #b38728 70%, #f9f295 100%); --gold-s: #d4af37; --bg: #050505; --card: #111; }
-        body { background: var(--bg); color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
-        .container { width: 100%; max-width: 420px; margin: 0 auto; padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; }
-        .header { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
-        .avatar { width: 50px; height: 50px; border-radius: 15px; border: 2px solid var(--gold-s); display: flex; align-items: center; justify-content: center; font-size: 24px; background: #000; box-shadow: 0 0 10px var(--gold-s); }
-        h1 { background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; margin: 0; cursor: pointer; font-weight: 900; }
-        .balance-card { background: var(--card); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 20px; text-align: center; position: relative; transition: 0.5s; }
-        .bal-val { font-size: 32px; font-weight: 800; display: block; }
-        .xp-line { width: 100%; height: 4px; background: #222; border-radius: 2px; margin-top: 10px; overflow: hidden; }
-        .xp-fill { height: 100%; background: var(--gold); width: 0%; transition: 0.3s; }
-        .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .game-card { background: var(--card); border: 1px solid #222; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; font-size: 10px; transition: 0.2s; }
-        .game-card:active { transform: scale(0.9); }
-        .game-card i { font-size: 20px; background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: 5px; }
-        .btn-main { background: var(--gold); border: none; padding: 18px; border-radius: 15px; color: #000; font-weight: 900; width: 100%; text-transform: uppercase; cursor: pointer; font-size: 16px; }
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: #111; border: 1px solid var(--gold-s); border-radius: 20px; padding: 20px; width: 100%; max-width: 320px; text-align: center; }
-        input { width: 100%; background: #000; border: 1px solid #333; color: #fff; padding: 12px; margin: 8px 0; border-radius: 10px; text-align: center; }
-        .mines-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin: 15px 0; }
-        .m-cell { aspect-ratio: 1; background: #222; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        :root {
+            --gold: #d4af37; --gold-grad: linear-gradient(135deg, #d4af37 0%, #f9f295 100%);
+            --bg: #050505; --card: rgba(25, 25, 25, 1); --border: rgba(212, 175, 55, 0.4);
+        }
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+        .container { width: 100%; max-width: 400px; margin: 0 auto; padding: 20px; box-sizing: border-box; }
+        
+        /* Glass Card */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 20px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+        .bal-val { font-size: 32px; font-weight: 900; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        .game-btn { background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .game-btn:active { transform: scale(0.95); border-color: var(--gold); }
+        .game-btn i { font-size: 24px; color: var(--gold); margin-bottom: 8px; display: block; }
+
+        /* Modals */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 1000; align-items: center; justify-content: center; padding: 15px; }
+        .modal-content { background: #0a0a0a; border: 1px solid var(--gold); border-radius: 28px; padding: 25px; width: 100%; max-width: 340px; text-align: center; }
+        
+        .btn-gold { background: var(--gold-grad); border: none; padding: 15px; border-radius: 12px; color: #000; font-weight: 800; width: 100%; cursor: pointer; margin-top: 10px; }
+        input { width: 100%; background: #000; border: 1px solid #333; color: #fff; padding: 12px; margin: 10px 0; border-radius: 10px; text-align: center; }
+
+        /* MINES Grid */
+        .mines-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+        .cell { aspect-ratio: 1; background: #151515; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #222; transition: 0.3s; }
+        .cell.open { background: var(--gold-grad); color: #000; transform: rotateY(180deg); }
+        .cell.bomb { background: #ff4444; border-color: #ff0000; }
+
+        /* CRASH Canvas */
+        #crashCanvas { width: 100%; height: 150px; background: #000; border-radius: 15px; margin-bottom: 15px; border: 1px solid #222; }
+        #crashMult { font-size: 48px; font-weight: 900; color: var(--gold); margin: 10px 0; }
+
+        .close { color: #444; font-size: 11px; margin-top: 15px; cursor: pointer; text-transform: uppercase; font-weight: 900; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header">
-        <div class="avatar" id="my-ava">💎</div>
-        <h1 onclick="admT()">AR1XY CASINO</h1>
-        <div style="text-align:right"><div id="rank" style="color:var(--gold-s); font-weight:bold; font-size:12px">НОВИЧОК</div><div style="font-size:10px; color:#555">LVL <span id="lvl">1</span></div></div>
+    <div class="card" id="mainCard">
+        <h1 style="font-size: 20px; margin: 0; opacity: 0.7;" onclick="adm()">AR1XY PRO</h1>
+        <span class="bal-val" id="bal">0 💸</span>
+        <div style="font-size: 10px; color: #555; margin-top: 5px;">RANK: <span id="rank" style="color: var(--gold);">НОВИЧОК</span></div>
     </div>
-    <div class="balance-card" id="m-card"><span id="bal" class="bal-val">0 💸</span><div class="xp-line"><div class="xp-fill" id="xp-f"></div></div></div>
-    <button class="btn-main" onclick="doClick(event)">КЛИКАТЬ (+10 💸)</button>
-    <div class="game-grid">
-        <div class="game-card" onclick="op('case')"><i class="fas fa-box"></i><span>Кейсы</span></div>
-        <div class="game-card" onclick="op('mines')"><i class="fas fa-bomb"></i><span>Mines</span></div>
-        <div class="game-card" onclick="op('crash')"><i class="fas fa-rocket"></i><span>Crash</span></div>
-        <div class="game-card" onclick="op('dice')"><i class="fas fa-dice"></i><span>Dice</span></div>
-        <div class="game-card" onclick="op('promo')"><i class="fas fa-ticket-alt"></i><span>Промо</span></div>
-        <div class="game-card" onclick="op('inv')"><i class="fas fa-briefcase"></i><span>Инвент</span></div>
+
+    <button class="btn-gold" style="padding: 20px; font-size: 18px; margin-top: 15px;" onclick="clicker()">КЛИКАТЬ 💸</button>
+
+    <div class="grid">
+        <div class="game-btn" onclick="openG('mines')"><i class="fas fa-bomb"></i><span>MINES</span></div>
+        <div class="game-btn" onclick="openG('crash')"><i class="fas fa-chart-line"></i><span>CRASH</span></div>
+        <div class="game-btn" onclick="openG('dice')"><i class="fas fa-dice"></i><span>DICE</span></div>
+        <div class="game-btn" onclick="openG('case')"><i class="fas fa-box-open"></i><span>CASE</span></div>
     </div>
 </div>
 
-<div id="m-case" class="modal"><div class="modal-content"><h3>КЕЙС (2000 💸)</h3><button class="btn-main" onclick="spin()">КРУТИТЬ</button><button onclick="cl()">ЗАКРЫТЬ</button></div></div>
-<div id="m-dice" class="modal"><div class="modal-content"><h3>DICE</h3><input id="d-b" type="number" value="100"><button class="btn-main" onclick="pDice()">ИГРАТЬ</button><button onclick="cl()">ЗАКРЫТЬ</button></div></div>
-<div id="m-promo" class="modal"><div class="modal-content"><h3>PROMO</h3><input id="p-in" type="text"><button class="btn-main" onclick="uP()">ОК</button><button onclick="cl()">ЗАКРЫТЬ</button></div></div>
-<div id="m-inv" class="modal"><div class="modal-content"><h3>ИНВЕНТАРЬ</h3><div id="inv-g" style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px"></div><button onclick="cl()">ОК</button></div></div>
-
 <div id="m-mines" class="modal"><div class="modal-content">
-    <h3>MINES</h3><div id="m-g" class="mines-grid"></div>
-    <button id="m-t" class="btn-main" style="display:none" onclick="mT()">ЗАБРАТЬ</button>
-    <button onclick="cl()">ВЫЙТИ</button>
+    <h3>MINES (3x3)</h3>
+    <div id="mBoard" class="mines-board"></div>
+    <button id="mTake" class="btn-gold" style="display:none" onclick="minesTake()">ЗАБРАТЬ</button>
+    <button class="btn-gold" id="mStart" onclick="minesStart()">ИГРАТЬ (500)</button>
+    <div class="close" onclick="closeAll()">Закрыть</div>
 </div></div>
 
 <div id="m-crash" class="modal"><div class="modal-content">
-    <h3>CRASH</h3><div id="c-v" style="font-size:40px;margin:20px;color:gold">1.00x</div>
-    <button id="c-b" class="btn-main" onclick="sCr()">СТАВКА (500)</button>
-    <button onclick="cl()">ЗАКРЫТЬ</button>
+    <h3>CRASH</h3>
+    <canvas id="crashCanvas"></canvas>
+    <div id="crashMult">1.00x</div>
+    <button id="cBtn" class="btn-gold" onclick="crashStart()">СТАВКА (500)</button>
+    <div class="close" onclick="closeAll()">Закрыть</div>
 </div></div>
 
-<div id="m-adm" class="modal"><div class="modal-content"><h3>ADMIN</h3><input id="a-b" placeholder="Баланс"><button class="btn-main" onclick="aG()">ОК</button><button onclick="cl()">ЗАКРЫТЬ</button></div></div>
+<div id="m-adm" class="modal"><div class="modal-content">
+    <h3>ADMIN</h3><input id="aB" placeholder="Баланс"><button class="btn-gold" onclick="aG()">SET</button>
+</div></div>
 
 <script>
-    let s = JSON.parse(localStorage.getItem('ar1xy_final')) || { b: 5000, xp: 0, items: ['💎'], active: '💎' };
-    function save() { localStorage.setItem('ar1xy_final', JSON.stringify(s)); r(); }
-    function r() {
-        document.getElementById('bal').innerText = s.b.toLocaleString() + " 💸";
-        document.getElementById('lvl').innerText = Math.floor(s.xp/1000)+1;
-        document.getElementById('xp-f').style.width = (s.xp%1000)/10+"%";
-        document.getElementById('my-ava').innerText = s.active;
-        document.getElementById('m-card').style.boxShadow = s.active === '🔥' ? "0 0 20px red" : "none";
-    }
-    function doClick(e) { s.b += 10; s.xp += 5; save(); }
-    function op(id) { if(id==='mines') iM(); if(id==='inv') drawI(); document.getElementById('m-'+id).style.display='flex'; }
-    function cl() { document.querySelectorAll('.modal').forEach(m=>m.style.display='none'); }
+    let s = JSON.parse(localStorage.getItem('ar1xy_p')) || { b: 5000, xp: 0 };
+    function save() { localStorage.setItem('ar1xy_p', JSON.stringify(s)); r(); }
+    function r() { document.getElementById('bal').innerText = s.b.toLocaleString() + " 💸"; }
 
-    function pDice() { 
-        let b = parseInt(document.getElementById('d-b').value);
-        if(s.b < b) return; s.b -= b;
-        if(Math.random() > 0.5) { s.b += b*2; alert("WIN!"); } else alert("LOSE"); save();
-    }
+    function openG(id) { document.getElementById('m-'+id).style.display='flex'; if(id==='crash') initCrash(); }
+    function closeAll() { document.querySelectorAll('.modal').forEach(m=>m.style.display='none'); }
 
-    function uP() { if(document.getElementById('p-in').value.toUpperCase()==='AR1XY') { s.b+=50000; alert("OK!"); } save(); cl(); }
+    function clicker() { s.b += 10; save(); }
 
-    function spin() {
-        if(s.b < 2000) return; s.b -= 2000;
-        let win = ['💰','💎','🔥','🍒','7️⃣'][Math.floor(Math.random()*5)];
-        if(!s.items.includes(win)) s.items.push(win);
-        if(win==='💰') s.b+=5000; alert("ВЫПАЛО: "+win); save();
-    }
-
-    function drawI() {
-        let g = document.getElementById('inv-g'); g.innerHTML='';
-        s.items.forEach(it=>{
-            let d = document.createElement('div'); d.innerText=it; d.style.padding="10px"; d.onclick=()=>{s.active=it;save();cl();};
-            g.appendChild(d);
-        });
-    }
-
-    // MINES
-    let mP=[], mActive=false, mWin=0;
-    function iM() {
-        if(s.b < 500) return alert("Нужно 500!"); s.b -= 500; mActive=true; mWin=0;
-        mP = [Math.floor(Math.random()*9)];
-        let g = document.getElementById('m-g'); g.innerHTML='';
+    // MINES LOGIC
+    let mActive = false, mWin = 0, mPos = [];
+    function minesStart() {
+        if(s.b < 500) return; s.b -= 500; mActive = true; mWin = 0; mPos = [Math.floor(Math.random()*9)];
+        document.getElementById('mStart').style.display = 'none';
+        let b = document.getElementById('mBoard'); b.innerHTML = '';
         for(let i=0; i<9; i++) {
-            let c = document.createElement('div'); c.className='m-cell'; c.innerText='?';
-            c.onclick=()=>{
-                if(!mActive || c.innerText!=='?') return;
-                if(mP.includes(i)) { c.innerText='💣'; mActive=false; alert("BOOM!"); cl(); }
-                else { c.innerText='💎'; mWin+=300; document.getElementById('m-t').style.display='block'; }
+            let c = document.createElement('div'); c.className = 'cell'; c.innerText = '?';
+            c.onclick = () => {
+                if(!mActive || c.classList.contains('open')) return;
+                if(mPos.includes(i)) {
+                    c.classList.add('bomb'); c.innerText = '💣'; mActive = false;
+                    setTimeout(() => { alert("BOOM!"); closeAll(); document.getElementById('mStart').style.display='block'; }, 500);
+                } else {
+                    c.classList.add('open'); c.innerText = '💎'; mWin += 400;
+                    document.getElementById('mTake').innerText = "ЗАБРАТЬ " + (500 + mWin);
+                    document.getElementById('mTake').style.display = 'block';
+                }
             };
-            g.appendChild(c);
+            b.appendChild(c);
         }
         save();
     }
-    function mT() { s.b += (500+mWin); mActive=false; cl(); save(); }
+    function minesTake() { s.b += (500 + mWin); mActive = false; document.getElementById('mTake').style.display='none'; document.getElementById('mStart').style.display='block'; closeAll(); save(); }
 
-    // CRASH
-    function sCr() {
+    // CRASH LOGIC
+    let cCtx, cT, cM = 1.0;
+    function initCrash() {
+        const can = document.getElementById('crashCanvas'); cCtx = can.getContext('2d');
+        cCtx.clearRect(0,0,can.width,can.height);
+    }
+    function crashStart() {
         if(s.b < 500) return; s.b -= 500; save();
-        let m=1.0, cA=Math.random()*3+1, btn=document.getElementById('c-b');
-        btn.innerText="ЗАБРАТЬ"; btn.onclick=()=>{ 
-            s.b+=Math.floor(500*m); alert("WIN: "+Math.floor(500*m)); clearInterval(t); btn.innerText="СТАВКА (500)"; btn.onclick=sCr; save();
+        let mult = 1.0, crashAt = 1.2 + Math.random() * 3, btn = document.getElementById('cBtn');
+        btn.innerText = "ЗАБРАТЬ"; btn.onclick = () => {
+            s.b += Math.floor(500 * mult); alert("ВЫИГРАЛ: " + mult.toFixed(2) + "x");
+            clearInterval(cT); btn.innerText = "СТАВКА (500)"; btn.onclick = crashStart; save();
         };
-        let t = setInterval(()=>{
-            m+=0.05; document.getElementById('c-v').innerText=m.toFixed(2)+"x";
-            if(m>=cA) { clearInterval(t); document.getElementById('c-v').innerText="BOOM!"; btn.innerText="СТАВКА (500)"; btn.onclick=sCr; }
-        },100);
+        cT = setInterval(() => {
+            mult += 0.02; document.getElementById('crashMult').innerText = mult.toFixed(2) + "x";
+            drawCrash(mult);
+            if(mult >= crashAt) {
+                clearInterval(cT); document.getElementById('crashMult').innerText = "CRASH!";
+                document.getElementById('crashMult').style.color = 'red';
+                setTimeout(() => { document.getElementById('crashMult').style.color = 'var(--gold)'; btn.innerText = "СТАВКА (500)"; btn.onclick = crashStart; }, 1000);
+            }
+        }, 80);
+    }
+    function drawCrash(m) {
+        cCtx.clearRect(0,0,300,150); cCtx.strokeStyle = '#d4af37'; cCtx.lineWidth = 3;
+        cCtx.beginPath(); cCtx.moveTo(0, 150);
+        cCtx.quadraticCurveTo(150, 150, 280, 150 - (m * 20)); cCtx.stroke();
     }
 
-    let taps=0; function admT(){ taps++; if(taps>=5){ op('adm'); taps=0; } }
-    function aG(){ s.b=parseInt(document.getElementById('a-b').value); save(); cl(); }
+    let taps = 0; function adm() { taps++; if(taps>=5){ openG('adm'); taps=0; } }
+    function aG() { s.b = parseInt(document.getElementById('aB').value); save(); closeAll(); }
     r();
 </script>
 </body>
