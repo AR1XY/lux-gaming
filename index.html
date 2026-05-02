@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AR1XY CASINO GOLD</title>
+    <title>AR1XY CASINO LUX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -17,198 +17,173 @@
             background: var(--bg); color: #fff;
             font-family: 'Segoe UI', sans-serif; margin: 0;
             display: flex; justify-content: center; min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .container { width: 100%; max-width: 400px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 15px; }
 
-        h1 { background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 30px; font-weight: 900; text-align: center; margin: 10px 0; cursor: pointer; }
+        /* Ранг и Опыт */
+        .rank-badge {
+            text-align: center; font-size: 10px; letter-spacing: 2px;
+            color: var(--gold-s); text-transform: uppercase; font-weight: bold;
+            margin-bottom: -10px;
+        }
 
-        .balance-box { background: var(--card); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .bal-val { font-size: 32px; font-weight: 800; display: block; margin: 5px 0; color: #fff; }
+        h1 { 
+            background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 32px; font-weight: 900; text-align: center; margin: 5px 0; cursor: pointer;
+        }
 
-        .btn-gold { background: var(--gold); border: none; padding: 14px; border-radius: 12px; color: #000; font-weight: 800; width: 100%; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
-        .btn-gold:active { transform: scale(0.97); }
+        .balance-box {
+            background: var(--card); border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 25px; padding: 25px; text-align: center;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            position: relative; overflow: hidden;
+        }
+        
+        .xp-bar {
+            position: absolute; bottom: 0; left: 0; height: 3px;
+            background: var(--gold); transition: 0.3s;
+        }
 
-        .game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .game-card { background: var(--card); border: 1px solid #222; padding: 15px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.2s; }
-        .game-card:active { border-color: var(--gold-s); }
-        .game-card i { font-size: 24px; background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; display: block; }
-        .game-card span { font-size: 12px; font-weight: 700; color: #888; }
+        .bal-val { font-size: 38px; font-weight: 800; display: block; margin: 10px 0; }
+
+        .btn-click {
+            background: var(--gold); border: none; padding: 18px;
+            border-radius: 15px; color: #000; font-weight: 900;
+            width: 100%; text-transform: uppercase; cursor: pointer;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); transition: 0.1s;
+        }
+        .btn-click:active { transform: scale(0.95); box-shadow: none; }
+
+        .game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .game-card {
+            background: var(--card); border: 1px solid #222;
+            padding: 20px; border-radius: 20px; text-align: center; cursor: pointer;
+        }
+        .game-card i { 
+            font-size: 26px; background: var(--gold); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 8px; display: block;
+        }
 
         /* Modals */
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: #151515; border: 1px solid var(--gold-s); border-radius: 20px; padding: 20px; width: 100%; max-width: 320px; text-align: center; }
+        .modal { 
+            display: none; position: fixed; inset: 0; 
+            background: rgba(0,0,0,0.98); z-index: 1000; 
+            align-items: center; justify-content: center; padding: 20px; 
+        }
+        .modal-content {
+            background: #111; border: 1px solid var(--gold-s);
+            border-radius: 30px; padding: 30px; width: 100%; max-width: 320px; text-align: center;
+        }
 
-        input { width: 100%; background: #000; border: 1px solid #333; color: #fff; padding: 10px; margin: 10px 0; border-radius: 8px; box-sizing: border-box; text-align: center; }
-
-        /* Mines Grid */
-        .mines-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 15px 0; }
-        .cell { aspect-ratio: 1; background: #0a0a0a; border: 1px solid #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; }
-
-        #crash-val { font-size: 40px; font-weight: 900; margin: 20px 0; color: var(--gold-s); }
+        .admin-input {
+            width: 100%; background: #000; border: 1px solid #333;
+            color: #fff; padding: 12px; margin: 10px 0; border-radius: 10px; text-align: center;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1 onclick="adminTap()">AR1XY CASINO</h1>
+    <div class="rank-badge" id="rank-name">НОВИЧОК</div>
+    <h1 onclick="adm()">AR1XY CASINO</h1>
     
     <div class="balance-box">
-        <span style="font-size: 11px; color: #666; letter-spacing: 1px;">ВАШ БАЛАНС</span>
-        <span class="bal-val" id="bal">0</span>
-        <button class="btn-gold" onclick="addMoney(1)">КЛИКАТЬ (+1 💸)</button>
+        <span style="font-size: 10px; color: #666; letter-spacing: 2px;">ТЕКУЩИЙ БАЛАНС</span>
+        <span class="bal-val" id="bal">0 💸</span>
+        <div style="font-size: 11px; color: #aaa;" id="xp-text">XP: 0 / 100</div>
+        <div class="xp-bar" id="xp-bar" style="width: 0%"></div>
     </div>
+
+    <button class="btn-click" onclick="clickWork()">КЛИКАТЬ (+5 💸)</button>
 
     <div class="game-grid">
-        <div class="game-card" onclick="openGame('dice')">
-            <i class="fas fa-dice"></i>
-            <span>DICE (x2)</span>
-        </div>
-        <div class="game-card" onclick="initMines()">
-            <i class="fas fa-bomb"></i>
-            <span>MINES</span>
-        </div>
-        <div class="game-card" onclick="openGame('coin')">
-            <i class="fas fa-coins"></i>
-            <span>COINFLIP</span>
-        </div>
-        <div class="game-card" onclick="openGame('crash')">
-            <i class="fas fa-chart-line"></i>
-            <span>CRASH</span>
-        </div>
-    </div>
-</div>
-
-<div id="m-dice" class="modal">
-    <div class="modal-content">
-        <h2 style="color:var(--gold-s)">DICE</h2>
-        <input type="number" id="dice-bet" value="100">
-        <div id="dice-res" style="font-size: 40px; margin: 10px;">🎲</div>
-        <button class="btn-gold" onclick="playDice()">ИГРАТЬ</button>
-        <button onclick="closeModal()" style="background:none; border:none; color:#555; margin-top:10px;">ЗАКРЫТЬ</button>
-    </div>
-</div>
-
-<div id="m-mines" class="modal">
-    <div class="modal-content">
-        <h2 style="color:var(--gold-s)">MINES</h2>
-        <div id="mines-board" class="mines-board"></div>
-        <button id="mines-take" class="btn-gold" style="display:none" onclick="takeMines()">ЗАБРАТЬ</button>
-        <button onclick="closeModal()" style="background:none; border:none; color:#555; margin-top:10px;">ВЫЙТИ</button>
-    </div>
-</div>
-
-<div id="m-coin" class="modal">
-    <div class="modal-content">
-        <h2 style="color:var(--gold-s)">COINFLIP</h2>
-        <input type="number" id="coin-bet" value="100">
-        <div id="coin-res" style="font-size: 40px; margin: 10px;">🪙</div>
-        <button class="btn-gold" onclick="playCoin()">БРОСИТЬ</button>
-        <button onclick="closeModal()" style="background:none; border:none; color:#555; margin-top:10px;">ЗАКРЫТЬ</button>
-    </div>
-</div>
-
-<div id="m-crash" class="modal">
-    <div class="modal-content">
-        <h2 style="color:var(--gold-s)">CRASH</h2>
-        <input type="number" id="crash-bet" value="100">
-        <div id="crash-val">1.00x</div>
-        <button id="crash-btn" class="btn-gold" onclick="startCrash()">СТАВКА</button>
-        <button onclick="closeModal()" style="background:none; border:none; color:#555; margin-top:10px;">ЗАКРЫТЬ</button>
+        <div class="game-card" onclick="alert('Игры активны в меню!')"><i class="fas fa-dice"></i><span>DICE</span></div>
+        <div class="game-card" onclick="alert('Игры активны в меню!')"><i class="fas fa-bomb"></i><span>MINES</span></div>
+        <div class="game-card" onclick="alert('Игры активны в меню!')"><i class="fas fa-chart-line"></i><span>CRASH</span></div>
+        <div class="game-card" onclick="alert('Игры активны в меню!')"><i class="fas fa-gem"></i><span>SLOTS</span></div>
     </div>
 </div>
 
 <div id="m-admin" class="modal">
     <div class="modal-content">
-        <h2 style="color:var(--gold-s)">ADMIN</h2>
-        <button class="btn-gold" onclick="setMoney()">УСТАНОВИТЬ БАЛАНС</button>
-        <button onclick="closeModal()" style="background:none; border:none; color:#555; margin-top:15px;">ВЫХОД</button>
+        <h2 style="color:var(--gold-s)">ADMIN PANEL</h2>
+        <p style="font-size: 12px; color: #666;">Управление данными игрока</p>
+        <input type="number" id="adm-bal" class="admin-input" placeholder="Новый баланс">
+        <input type="number" id="adm-xp" class="admin-input" placeholder="Новый XP (для ранга)">
+        <button class="btn-click" onclick="saveAdmin()">ПРИМЕНИТЬ</button>
+        <button onclick="closeMod()" style="background:none; border:none; color:#555; margin-top:15px; cursor:pointer;">ЗАКРЫТЬ</button>
     </div>
 </div>
 
 <script>
-    let bal = parseInt(localStorage.getItem('b')) || 1000;
-    let mPos = [], mWin = 0, mActive = false;
+    let data = {
+        bal: parseInt(localStorage.getItem('lux_bal')) || 1000,
+        xp: parseInt(localStorage.getItem('lux_xp')) || 0
+    };
 
-    function upd() {
-        document.getElementById('bal').innerText = bal.toLocaleString() + " 💸";
-        localStorage.setItem('b', bal);
-    }
+    const ranks = [
+        { n: "Новичок", min: 0 },
+        { n: "Игрок", min: 500 },
+        { n: "Хайроллер", min: 2000 },
+        { n: "Золотой Магнат", min: 10000 },
+        { n: "ВЛАДЕЛЕЦ", min: 50000 }
+    ];
 
-    function addMoney(v) { bal += v; upd(); }
-    function openGame(id) { document.getElementById('m-'+id).style.display = 'flex'; }
-    function closeModal() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
-
-    // DICE
-    function playDice() {
-        let b = parseInt(document.getElementById('dice-bet').value);
-        if(bal < b) return alert("Мало монет!");
-        bal -= b;
-        let r = Math.floor(Math.random() * 6) + 1;
-        document.getElementById('dice-res').innerText = r;
-        if(r > 3) { bal += b * 2; alert("ПОБЕДА!"); } else alert("ПРОИГРЫШ");
-        upd();
-    }
-
-    // COIN
-    function playCoin() {
-        let b = parseInt(document.getElementById('coin-bet').value);
-        if(bal < b) return alert("Мало монет!");
-        bal -= b;
-        let win = Math.random() > 0.5;
-        document.getElementById('coin-res').innerText = win ? "🌕" : "🌑";
-        if(win) { bal += b * 2; alert("ВЫИГРАЛ!"); } else alert("ПРОИГРАЛ");
-        upd();
-    }
-
-    // MINES (3x3)
-    function initMines() {
-        let bet = 100; if(bal < bet) return alert("Ставка 100!");
-        bal -= bet; mWin = 0; mActive = true;
-        mPos = [Math.floor(Math.random()*9)];
-        openGame('mines');
-        const board = document.getElementById('mines-board'); board.innerHTML = '';
-        for(let i=0; i<9; i++) {
-            let c = document.createElement('div'); c.className = 'cell';
-            c.onclick = () => {
-                if(!mActive || c.innerText) return;
-                if(mPos.includes(i)) { c.innerText='💣'; mActive=false; alert("BOOM!"); closeModal(); }
-                else { c.innerText='💎'; mWin += 50; document.getElementById('mines-take').style.display='block'; }
-            };
-            board.appendChild(c);
-        }
-        upd();
-    }
-    function takeMines() { bal += (100 + mWin); mActive=false; closeModal(); upd(); }
-
-    // CRASH
-    function startCrash() {
-        let b = parseInt(document.getElementById('crash-bet').value);
-        if(bal < b) return alert("Мало монет!");
-        bal -= b; upd();
-        let mult = 1.0;
-        let crashAt = (Math.random() * 3 + 1).toFixed(2);
-        let btn = document.getElementById('crash-btn');
-        btn.innerText = "ЗАБРАТЬ"; btn.onclick = () => {
-            let win = Math.floor(b * mult); bal += win;
-            alert("ЗАБРАЛ: " + win); clearInterval(timer);
-            btn.innerText = "СТАВКА"; btn.onclick = startCrash; upd();
-        };
-        let timer = setInterval(() => {
-            mult += 0.05;
-            document.getElementById('crash-val').innerText = mult.toFixed(2) + "x";
-            if(mult >= crashAt) {
-                clearInterval(timer); document.getElementById('crash-val').innerText = "CRASHED!";
-                btn.innerText = "СТАВКА"; btn.onclick = startCrash;
+    function update() {
+        document.getElementById('bal').innerText = data.bal.toLocaleString() + " 💸";
+        
+        // Ранги
+        let currentRank = ranks[0].n;
+        let nextRankXp = 500;
+        
+        for (let i = 0; i < ranks.length; i++) {
+            if (data.xp >= ranks[i].min) {
+                currentRank = ranks[i].n;
+                nextRankXp = ranks[i+1] ? ranks[i+1].min : ranks[i].min;
             }
-        }, 100);
+        }
+
+        document.getElementById('rank-name').innerText = currentRank;
+        document.getElementById('xp-text').innerText = `XP: ${data.xp} / ${nextRankXp}`;
+        
+        let progress = (data.xp / nextRankXp) * 100;
+        document.getElementById('xp-bar').style.width = (progress > 100 ? 100 : progress) + "%";
+
+        localStorage.setItem('lux_bal', data.bal);
+        localStorage.setItem('lux_xp', data.xp);
     }
 
-    let t = 0;
-    function adminTap() { t++; if(t >= 5) { if(prompt("PASS") === "777") openGame('admin'); t = 0; } }
-    function setMoney() { let m = prompt("Сумма?"); if(m) { bal = parseInt(m); upd(); } }
+    function clickWork() {
+        data.bal += 5;
+        data.xp += 2;
+        update();
+    }
 
-    upd();
+    function closeMod() { document.getElementById('m-admin').style.display = 'none'; }
+
+    let taps = 0;
+    function adm() {
+        taps++;
+        if(taps >= 5) {
+            let p = prompt("PASSWORD:");
+            if(p === "777") document.getElementById('m-admin').style.display = 'flex';
+            taps = 0;
+        }
+    }
+
+    function saveAdmin() {
+        let b = document.getElementById('adm-bal').value;
+        let x = document.getElementById('adm-xp').value;
+        if(b) data.bal = parseInt(b);
+        if(x) data.xp = parseInt(x);
+        update();
+        closeMod();
+    }
+
+    update();
 </script>
 </body>
 </html>
