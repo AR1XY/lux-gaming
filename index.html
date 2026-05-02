@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AR1XY CASINO LUX</title>
+    <title>AR1XY CASINO GOLD ULTIMATE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -16,174 +16,174 @@
         body {
             background: var(--bg); color: #fff;
             font-family: 'Segoe UI', sans-serif; margin: 0;
-            display: flex; justify-content: center; min-height: 100vh;
-            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden; -webkit-tap-highlight-color: transparent;
         }
 
-        .container { width: 100%; max-width: 400px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 15px; }
+        .container { width: 100%; max-width: 420px; margin: 0 auto; padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; gap: 15px; }
 
-        /* Ранг и Опыт */
-        .rank-badge {
-            text-align: center; font-size: 10px; letter-spacing: 2px;
-            color: var(--gold-s); text-transform: uppercase; font-weight: bold;
-            margin-bottom: -10px;
-        }
+        /* Live Feed */
+        .live-feed { background: #000; height: 30px; border-bottom: 1px solid #222; font-size: 11px; display: flex; align-items: center; overflow: hidden; white-space: nowrap; }
+        .feed-track { display: inline-block; animation: scroll 20s linear infinite; color: var(--gold-s); }
+        @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
 
-        h1 { 
-            background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            font-size: 32px; font-weight: 900; text-align: center; margin: 5px 0; cursor: pointer;
-        }
+        /* Профиль и Ранг */
+        .header-profile { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+        .profile-info { display: flex; align-items: center; gap: 10px; }
+        .avatar { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--gold-s); background: #000; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--gold-s); }
+        .rank-label { text-align: right; }
+        .rank-name { font-size: 12px; font-weight: bold; color: var(--gold-s); text-transform: uppercase; letter-spacing: 1px; }
 
-        .balance-box {
-            background: var(--card); border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 25px; padding: 25px; text-align: center;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
-            position: relative; overflow: hidden;
-        }
+        h1 { background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; text-align: center; margin: 10px 0; cursor: pointer; font-weight: 900; }
         
-        .xp-bar {
-            position: absolute; bottom: 0; left: 0; height: 3px;
-            background: var(--gold); transition: 0.3s;
-        }
+        /* Кнопки и Баланс */
+        .balance-card { background: var(--card); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 20px; padding: 15px; text-align: center; position: relative; overflow: hidden; }
+        .bal-val { font-size: 30px; font-weight: 800; display: block; margin: 5px 0; }
+        .xp-bar { position: absolute; bottom: 0; left: 0; height: 3px; background: var(--gold); transition: 0.3s; }
 
-        .bal-val { font-size: 38px; font-weight: 800; display: block; margin: 10px 0; }
+        .btn-work { background: var(--gold); border: none; padding: 16px; border-radius: 12px; color: #000; font-weight: 900; width: 100%; text-transform: uppercase; cursor: pointer; position: relative; transition: 0.1s; }
+        .btn-work:active { transform: scale(0.97); }
 
-        .btn-click {
-            background: var(--gold); border: none; padding: 18px;
-            border-radius: 15px; color: #000; font-weight: 900;
-            width: 100%; text-transform: uppercase; cursor: pointer;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); transition: 0.1s;
-        }
-        .btn-click:active { transform: scale(0.95); box-shadow: none; }
+        /* Particle effect */
+        .coin-part { position: absolute; pointer-events: none; opacity: 1; animation: flyCoin 1s forwards; font-size: 18px; color: gold; z-index: 10; }
+        @keyframes flyCoin { 0% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -150px) scale(1.5) rotate(720deg); } }
 
-        .game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .game-card {
-            background: var(--card); border: 1px solid #222;
-            padding: 20px; border-radius: 20px; text-align: center; cursor: pointer;
-        }
-        .game-card i { 
-            font-size: 26px; background: var(--gold); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 8px; display: block;
-        }
+        /* Игры и Кейсы */
+        .game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .game-card { background: var(--card); border: 1px solid #222; padding: 15px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .game-card i { font-size: 24px; background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: 5px; }
+
+        /* Кейсы */
+        .case-roulette { height: 100px; border: 2px solid var(--gold-s); border-radius: 10px; margin: 15px 0; display: flex; align-items: center; overflow: hidden; position: relative; background: #000; }
+        .roulette-inner { display: flex; position: absolute; left: 0; transition: 3s cubic-bezier(0.1, 0.7, 0.1, 1); }
+        .roulette-item { min-width: 60px; height: 60px; margin: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; border-radius: 8px; border: 1px solid #333; }
+        .selector-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: white; transform: translateX(-50%); z-index: 5; }
 
         /* Modals */
-        .modal { 
-            display: none; position: fixed; inset: 0; 
-            background: rgba(0,0,0,0.98); z-index: 1000; 
-            align-items: center; justify-content: center; padding: 20px; 
-        }
-        .modal-content {
-            background: #111; border: 1px solid var(--gold-s);
-            border-radius: 30px; padding: 30px; width: 100%; max-width: 320px; text-align: center;
-        }
-
-        .admin-input {
-            width: 100%; background: #000; border: 1px solid #333;
-            color: #fff; padding: 12px; margin: 10px 0; border-radius: 10px; text-align: center;
-        }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: #111; border: 1px solid var(--gold-s); border-radius: 25px; padding: 20px; width: 100%; max-width: 340px; position: relative; }
+        .btn-gold { background: var(--gold); border: none; padding: 12px; border-radius: 10px; color: #000; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+        input { width: 100%; background: #000; border: 1px solid #333; color: #fff; padding: 10px; margin: 10px 0; border-radius: 10px; text-align: center; box-sizing: border-box; }
     </style>
 </head>
 <body>
 
+<div class="live-feed">
+    <div class="feed-track" id="feed">Загрузка выигрышей... | 🔥 King_Gold выиграл 2500 💸 в Tower | Anon_99 открыл Gold-Кейс | 🔥 Diamond_G сорвал Джекпот в Slots | 🏆 Владелец Ar1xUser зашел в сеть |</div>
+</div>
+
 <div class="container">
-    <div class="rank-badge" id="rank-name">НОВИЧОК</div>
-    <h1 onclick="adm()">AR1XY CASINO</h1>
+    <div class="header-profile">
+        <div class="profile-info">
+            <div class="avatar" id="prof-ava"><i class="fas fa-smile"></i></div>
+            <h1 onclick="adminTap()">AR1XY CASINO</h1>
+        </div>
+        <div class="rank-label">
+            <div class="rank-name" id="rank-name">Новичок</div>
+            <div style="font-size:10px; color:#555;">(XP: <span id="xp-val">0</span>)</div>
+        </div>
+    </div>
     
-    <div class="balance-box">
-        <span style="font-size: 10px; color: #666; letter-spacing: 2px;">ТЕКУЩИЙ БАЛАНС</span>
-        <span class="bal-val" id="bal">0 💸</span>
-        <div style="font-size: 11px; color: #aaa;" id="xp-text">XP: 0 / 100</div>
+    <div class="balance-card">
+        <span id="bal" class="bal-val">0 💸</span>
         <div class="xp-bar" id="xp-bar" style="width: 0%"></div>
     </div>
 
-    <button class="btn-click" onclick="clickWork()">КЛИКАТЬ (+5 💸)</button>
+    <button class="btn-work" onclick="clickJob(event)">ДОБЫТЬ 💸 (+5)</button>
 
     <div class="game-grid">
-        <div class="game-card" onclick="alert('Игры активны в меню!')"><i class="fas fa-dice"></i><span>DICE</span></div>
-        <div class="game-card" onclick="alert('Игры активны в меню!')"><i class="fas fa-bomb"></i><span>MINES</span></div>
-        <div class="game-card" onclick="alert('Игры активны в меню!')"><i class="fas fa-chart-line"></i><span>CRASH</span></div>
-        <div class="game-card" onclick="alert('Игры активны в меню!')"><i class="fas fa-gem"></i><span>SLOTS</span></div>
+        <div class="game-card" onclick="alert('Игры работают в финальной сборке!')"><i class="fas fa-dice"></i><span>Dice</span></div>
+        <div class="game-card" onclick="alert('Мины работают в финальной сборке!')"><i class="fas fa-bomb"></i><span>Mines</span></div>
+        <div class="game-card" onclick="openGame('case')"><i class="fas fa-box-open"></i><span>КЕЙСЫ</span></div>
+        <div class="game-card" onclick="alert('Краш работает в финальной сборке!')"><i class="fas fa-chart-line"></i><span>Crash</span></div>
     </div>
 </div>
 
-<div id="m-admin" class="modal">
-    <div class="modal-content">
-        <h2 style="color:var(--gold-s)">ADMIN PANEL</h2>
-        <p style="font-size: 12px; color: #666;">Управление данными игрока</p>
-        <input type="number" id="adm-bal" class="admin-input" placeholder="Новый баланс">
-        <input type="number" id="adm-xp" class="admin-input" placeholder="Новый XP (для ранга)">
-        <button class="btn-click" onclick="saveAdmin()">ПРИМЕНИТЬ</button>
-        <button onclick="closeMod()" style="background:none; border:none; color:#555; margin-top:15px; cursor:pointer;">ЗАКРЫТЬ</button>
+<div id="m-case" class="modal"><div class="modal-content">
+    <h2>ОТКРЫТЬ КЕЙС (1000 💸)</h2>
+    <div class="case-roulette">
+        <div class="selector-line"></div>
+        <div id="roulette" class="roulette-inner"></div>
     </div>
-</div>
+    <button class="btn-gold" id="case-btn" onclick="openCase()">КРУТИТЬ РУЛЕТКУ</button>
+    <button onclick="closeModals()" style="color:#555; background:none; border:none; margin-top:10px; cursor:pointer;">ЗАКРЫТЬ</button>
+</div></div>
+
+<div id="m-admin" class="modal"><div class="modal-content">
+    <h2>ADMIN</h2><p style="font-size:11px; color:#666;">PASSWORD: 777</p>
+    <input type="number" id="adm-bal" placeholder="Установить баланс">
+    <input type="number" id="adm-xp" placeholder="Установить XP">
+    <button class="btn-gold" onclick="saveAdmin()">ПРИМЕНИТЬ</button>
+    <button onclick="closeModals()" style="color:#555; background:none; border:none; margin-top:15px; cursor:pointer;">ВЫХОД</button>
+</div></div>
 
 <script>
-    let data = {
-        bal: parseInt(localStorage.getItem('lux_bal')) || 1000,
-        xp: parseInt(localStorage.getItem('lux_xp')) || 0
-    };
-
-    const ranks = [
-        { n: "Новичок", min: 0 },
-        { n: "Игрок", min: 500 },
-        { n: "Хайроллер", min: 2000 },
-        { n: "Золотой Магнат", min: 10000 },
-        { n: "ВЛАДЕЛЕЦ", min: 50000 }
+    let d = { bal: parseInt(localStorage.getItem('f_b')) || 1000, xp: parseInt(localStorage.getItem('f_x')) || 0 };
+    const items = ['💰','💰','💰','⭐','⭐','💎','💎','7️⃣','7️⃣','🔥','💀'];
+    const rks = [
+        { n: "Новичок", x: 0, ava: '<i class="fas fa-smile"></i>' },
+        { n: "Игрок", x: 500, ava: '<i class="fas fa-user-check"></i>' },
+        { n: "Хайроллер", x: 5000, ava: '<i class="fas fa-money-bill-wave"></i>' },
+        { n: "Золотой Магнат", x: 20000, ava: '<i class="fas fa-gem"></i>' },
+        { n: "ВЛАДЕЛЕЦ", x: 100000, ava: '<i class="fas fa-crown"></i>' }
     ];
 
-    function update() {
-        document.getElementById('bal').innerText = data.bal.toLocaleString() + " 💸";
+    function upd() { 
+        document.getElementById('bal').innerText = d.bal.toLocaleString() + " 💸";
+        document.getElementById('xp-val').innerText = d.xp.toLocaleString();
+        localStorage.setItem('f_b', d.bal); localStorage.setItem('f_x', d.xp);
         
-        // Ранги
-        let currentRank = ranks[0].n;
-        let nextRankXp = 500;
-        
-        for (let i = 0; i < ranks.length; i++) {
-            if (data.xp >= ranks[i].min) {
-                currentRank = ranks[i].n;
-                nextRankXp = ranks[i+1] ? ranks[i+1].min : ranks[i].min;
-            }
-        }
-
-        document.getElementById('rank-name').innerText = currentRank;
-        document.getElementById('xp-text').innerText = `XP: ${data.xp} / ${nextRankXp}`;
-        
-        let progress = (data.xp / nextRankXp) * 100;
-        document.getElementById('xp-bar').style.width = (progress > 100 ? 100 : progress) + "%";
-
-        localStorage.setItem('lux_bal', data.bal);
-        localStorage.setItem('lux_xp', data.xp);
+        let rank = rks[0]; let nXp = 500;
+        for (let r of rks) { if(d.xp >= r.x) { rank = r; nXp = rks[rks.indexOf(r)+1] ? rks[rks.indexOf(r)+1].x : r.x; } }
+        document.getElementById('rank-name').innerText = rank.n;
+        document.getElementById('prof-ava').innerHTML = rank.ava;
+        let prog = (d.xp / nXp) * 100;
+        document.getElementById('xp-bar').style.width = (prog > 100 ? 100 : prog) + "%";
     }
 
-    function clickWork() {
-        data.bal += 5;
-        data.xp += 2;
-        update();
-    }
-
-    function closeMod() { document.getElementById('m-admin').style.display = 'none'; }
-
-    let taps = 0;
-    function adm() {
-        taps++;
-        if(taps >= 5) {
-            let p = prompt("PASSWORD:");
-            if(p === "777") document.getElementById('m-admin').style.display = 'flex';
-            taps = 0;
+    function clickJob(e) {
+        d.bal += 5; d.xp += 2; upd();
+        // Эффект монеток
+        for (let i=0; i<3; i++) {
+            let p = document.createElement('div'); p.className = 'coin-part'; p.innerText = '💸';
+            p.style.left = e.clientX + 'px'; p.style.top = e.clientY + 'px';
+            document.body.appendChild(p); setTimeout(() => p.remove(), 1000);
         }
     }
 
-    function saveAdmin() {
-        let b = document.getElementById('adm-bal').value;
-        let x = document.getElementById('adm-xp').value;
-        if(b) data.bal = parseInt(b);
-        if(x) data.xp = parseInt(x);
-        update();
-        closeMod();
+    // КЕЙСЫ
+    function openCase() {
+        if(d.bal < 1000) return alert("Мало монет!");
+        d.bal -= 1000; upd();
+        document.getElementById('case-btn').style.display = 'none';
+        const roul = document.getElementById('roulette'); roul.innerHTML = ''; roul.style.transition = 'none'; roul.style.left = '0';
+        for(let i=0; i<40; i++) {
+            let it = items[Math.floor(Math.random()*items.length)];
+            roul.innerHTML += `<div class="roulette-item">${it}</div>`;
+        }
+        let win = items[Math.floor(Math.random()*items.length)];
+        let winDiv = document.createElement('div'); winDiv.className = 'roulette-item'; winDiv.id = 'win'; winDiv.innerText = win;
+        roul.innerHTML += winDiv.outerHTML; roul.innerHTML += '<div class="roulette-item">💀</div><div class="roulette-item">💰</div>';
+        
+        setTimeout(() => {
+            roul.style.transition = '3s cubic-bezier(0.1, 0.7, 0.1, 1)';
+            roul.style.left = - (winDiv.offsetWidth + 20) * 38 + 'px'; // Плавный сдвиг к выигрышу
+        }, 100);
+
+        setTimeout(() => {
+            let p = 0;
+            if(win === '💰') p = 500; if(win === '⭐') p = 1500; if(win === '💎') p = 5000; if(win === '7️⃣') p = 10000; if(win === '🔥') p = 50000; if(win === '💀') alert("LOSE");
+            d.bal += p; alert("ВЫИГРАЛ: " + p); document.getElementById('case-btn').style.display = 'block'; upd();
+        }, 3200);
     }
 
-    update();
+    function openGame(g) { document.getElementById('m-'+g).style.display = 'flex'; }
+    function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+    let t = 0; function adminTap() { t++; if(t >= 5) { if(prompt("PASS") === "777") openGame('admin'); t = 0; } }
+    function saveAdmin() { 
+        let b = document.getElementById('adm-bal').value; let x = document.getElementById('adm-xp').value;
+        if(b) d.bal = parseInt(b); if(x) d.xp = parseInt(x); upd(); closeModals();
+    }
+    upd();
 </script>
 </body>
 </html>
